@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 from Problem1 import images
+from Problem1 import frames_to_display
 
 # Compute finite difference gradients
 Vx = images[:, :, 1:] - images[:, :, :-1]  # Gradient along x (width)
@@ -10,8 +11,6 @@ Vt = images[1:, :, :] - images[:-1, :, :]  # Gradient along t (depth)
 print("Vx shape:", Vx.shape)  # (64, 256, 255)
 print("Vy shape:", Vy.shape)  # (64, 255, 256)
 print("Vt shape:", Vt.shape)  # (63, 256, 256)
-
-frames_to_display = [10, 20, 30]
 
 fig, axes = plt.subplots(len(frames_to_display), 3, figsize=(12, 8))
 

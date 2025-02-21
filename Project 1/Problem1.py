@@ -12,6 +12,8 @@ image_files = sorted([f for f in os.listdir(folder_path) if f.endswith(".png")])
 # Load images as grayscale and stack them into a 3D NumPy array
 images = np.array([iio.imread(os.path.join(folder_path, f), mode="L") / 255.0 for f in image_files])
 
+frames_to_display = [10, 20, 30]
+
 print(images.shape)  # (num_images, height, width)
 
 if __name__ == "__main__":
