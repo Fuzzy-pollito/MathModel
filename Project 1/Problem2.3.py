@@ -45,12 +45,12 @@ Vt = scipy.ndimage.convolve1d(images, G_deriv, axis=0, mode='nearest')  # Z-dire
 fig, ax = plt.subplots(len(frames_to_display), 3, figsize=(15, 10))
 for i, frame in enumerate(frames_to_display):
     ax[i, 0].imshow(Vx[frame], cmap='gray')
-    ax[i, 0].set_title(f"Gaussian Gradient Vx (σ={sigma}) - Frame {frame}")
+    ax[i, 0].set_title(f"Gaussian Vx (σ={sigma}) - Frame {frame}")
     ax[i, 1].imshow(Vy[frame], cmap='gray')
-    ax[i, 1].set_title(f"Gaussian Gradient Vy (σ={sigma}) - Frame {frame}")
+    ax[i, 1].set_title(f"Gaussian Vy (σ={sigma}) - Frame {frame}")
     if frame < Vt.shape[0]:
         ax[i, 2].imshow(Vt[frame], cmap='gray')
-        ax[i, 2].set_title(f"Gaussian Gradient Vt (σ={sigma}) - Frame {frame}")
+        ax[i, 2].set_title(f"Gaussian Vt (σ={sigma}) - Frame {frame}")
     else:
         ax[i, 2].axis("off")
 plt.tight_layout()
