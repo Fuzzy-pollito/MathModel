@@ -33,6 +33,7 @@ print('Prewitt_y: ', '\n', prewitt_y)
 print()
 print('Sobel_x: ', '\n', sobel_x)
 print('Sobel_y: ', '\n', sobel_y)
+print()
 
 # Compute gradients using Prewitt filter
 Vx_prewitt = scipy.ndimage.convolve(images, prewitt_x[np.newaxis, :, :])  # X-gradient (Prewitt)
@@ -43,6 +44,14 @@ Vt_prewitt = scipy.ndimage.prewitt(images, axis=0)  # Z-gradient (Prewitt)
 Vx_sobel = scipy.ndimage.convolve(images, sobel_x[np.newaxis, :, :])  # X-gradient (Sobel)
 Vy_sobel = scipy.ndimage.convolve(images, sobel_y[np.newaxis, :, :])  # Y-gradient (Sobel)
 Vt_sobel = scipy.ndimage.sobel(images, axis=0)  # Z-gradient (Sobel)
+
+# Print the shapes to verify
+print('Vx Prewitt shape:', Vx_prewitt.shape)
+print('Vy Prewitt shape:', Vy_prewitt.shape)
+print('Vt Prewitt shape:', Vt_prewitt.shape)
+print('Vx Sobel shape:', Vx_sobel.shape)
+print('Vy Sobel shape:', Vy_sobel.shape)
+print('Vt Sobel shape:', Vt_sobel.shape)
 
 # Display the Prewitt gradient for select frames
 fig, ax = plt.subplots(len(frames_to_display), 3, figsize=(15, 10))

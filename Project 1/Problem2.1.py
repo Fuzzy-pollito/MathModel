@@ -8,9 +8,9 @@ Vy = images[:, 1:, :] - images[:, :-1, :]  # Gradient along y (height)
 Vt = images[1:, :, :] - images[:-1, :, :]  # Gradient along t (depth)
 
 # Print shapes to verify
-print("Vx shape:", Vx.shape)  # (64, 256, 255)
-print("Vy shape:", Vy.shape)  # (64, 255, 256)
-print("Vt shape:", Vt.shape)  # (63, 256, 256)
+print("Vx shape:", Vx.shape)
+print("Vy shape:", Vy.shape)
+print("Vt shape:", Vt.shape)
 
 fig, ax = plt.subplots(len(frames_to_display), 3, figsize=(12, 8))
 for i, frame in enumerate(frames_to_display):

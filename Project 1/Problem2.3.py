@@ -42,6 +42,12 @@ Vx = scipy.ndimage.convolve1d(images, G_deriv, axis=2, mode='nearest')  # X-dire
 Vy = scipy.ndimage.convolve1d(images, G_deriv, axis=1, mode='nearest')  # Y-direction
 Vt = scipy.ndimage.convolve1d(images, G_deriv, axis=0, mode='nearest')  # Z-direction (time/depth)
 
+# Print the shape to verify
+print('Vx shape:', Vx.shape)
+print('Vy shape:', Vy.shape)
+print('Vt shape:', Vt.shape)
+
+# Plotting
 fig, ax = plt.subplots(len(frames_to_display), 3, figsize=(15, 10))
 for i, frame in enumerate(frames_to_display):
     ax[i, 0].imshow(Vx[frame], cmap='gray')
