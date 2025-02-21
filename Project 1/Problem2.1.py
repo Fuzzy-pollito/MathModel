@@ -12,20 +12,16 @@ print("Vx shape:", Vx.shape)  # (64, 256, 255)
 print("Vy shape:", Vy.shape)  # (64, 255, 256)
 print("Vt shape:", Vt.shape)  # (63, 256, 256)
 
-fig, axes = plt.subplots(len(frames_to_display), 3, figsize=(12, 8))
-
+fig, ax = plt.subplots(len(frames_to_display), 3, figsize=(12, 8))
 for i, frame in enumerate(frames_to_display):
-    axes[i, 0].imshow(Vx[frame], cmap='bwr', aspect='equal')
-    axes[i, 0].set_title(f"Vx - Frame {frame}")
-
-    axes[i, 1].imshow(Vy[frame], cmap='bwr', aspect='equal')
-    axes[i, 1].set_title(f"Vy - Frame {frame}")
-
+    ax[i, 0].imshow(Vx[frame], cmap='bwr', aspect='equal')
+    ax[i, 0].set_title(f"Vx - Frame {frame}")
+    ax[i, 1].imshow(Vy[frame], cmap='bwr', aspect='equal')
+    ax[i, 1].set_title(f"Vy - Frame {frame}")
     if frame < Vt.shape[0]:  # Vt has one less frame
-        axes[i, 2].imshow(Vt[frame], cmap='bwr', aspect='equal')
-        axes[i, 2].set_title(f"Vt - Frame {frame}")
+        ax[i, 2].imshow(Vt[frame], cmap='bwr', aspect='equal')
+        ax[i, 2].set_title(f"Vt - Frame {frame}")
     else:
-        axes[i, 2].axis("off")  # Hide if out of range
-
+        ax[i, 2].axis("off")  # Hide if out of range
 plt.tight_layout()
 plt.show()
