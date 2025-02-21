@@ -28,11 +28,11 @@ sobel_y = np.array([[1, 2, 1], [0, 0, 0], [-1, -2, -1]])  # Vertical gradient (S
 #     a.axis('off')
 # plt.tight_layout()
 # plt.show()
-print('Prewitt_x: ','\n', prewitt_x)
-print('Prewitt_y: ','\n', prewitt_y)
+print('Prewitt_x: ', '\n', prewitt_x)
+print('Prewitt_y: ', '\n', prewitt_y)
 print()
-print('Sobel_x: ','\n', sobel_x)
-print('Sobel_y: ','\n', sobel_y)
+print('Sobel_x: ', '\n', sobel_x)
+print('Sobel_y: ', '\n', sobel_y)
 
 # Compute gradients using Prewitt filter
 Vx_prewitt = scipy.ndimage.convolve(images, prewitt_x[np.newaxis, :, :])  # X-gradient (Prewitt)
@@ -44,6 +44,7 @@ Vx_sobel = scipy.ndimage.convolve(images, sobel_x[np.newaxis, :, :])  # X-gradie
 Vy_sobel = scipy.ndimage.convolve(images, sobel_y[np.newaxis, :, :])  # Y-gradient (Sobel)
 Vt_sobel = scipy.ndimage.sobel(images, axis=0)  # Z-gradient (Sobel)
 
+# Display the Prewitt gradient for select frames
 fig, ax = plt.subplots(len(frames_to_display), 3, figsize=(15, 10))
 for i, frame in enumerate(frames_to_display):
     ax[i, 0].imshow(Vx_prewitt[frame], cmap='gray')
@@ -52,12 +53,13 @@ for i, frame in enumerate(frames_to_display):
     ax[i, 1].set_title(f"Prewitt Vy (Gradient in Y) - Frame {frame}")
     if frame < Vt_prewitt.shape[0]:  # Vt has one less frame
         ax[i, 2].imshow(Vt_prewitt[frame], cmap='gray')
-        ax[i, 2].set_title(f"Prewitt Vt (Gradient in t - Frame {frame}")
+        ax[i, 2].set_title(f"Prewitt Vt (Gradient in t) - Frame {frame}")
     else:
         ax[i, 2].axis("off")  # Hide if out of range
 plt.tight_layout()
 plt.show()
 
+# Display the Sobel Gradient for select frames
 fig, ax = plt.subplots(len(frames_to_display), 3, figsize=(15, 10))
 for i, frame in enumerate(frames_to_display):
     ax[i, 0].imshow(Vx_sobel[frame], cmap='gray')
@@ -66,12 +68,11 @@ for i, frame in enumerate(frames_to_display):
     ax[i, 1].set_title(f"Sobel Vy (Gradient in Y) - Frame {frame}")
     if frame < Vt_sobel.shape[0]:  # Vt has one less frame
         ax[i, 2].imshow(Vt_sobel[frame], cmap='gray')
-        ax[i, 2].set_title(f"Sobel Vt (Gradient in t - Frame {frame}")
+        ax[i, 2].set_title(f"Sobel Vt (Gradient in t) - Frame {frame}")
     else:
         ax[i, 2].axis("off")  # Hide if out of range
 plt.tight_layout()
 plt.show()
-
 
 # From chat
 # fig, ax = plt.subplots(len(frames_to_display), 3, figsize=(15, 10))
@@ -92,14 +93,13 @@ plt.show()
 # plt.tight_layout()
 # plt.show()
 
-
 # Edge detection
 # fig, ax = plt.subplots(1, 3, figsize=(15, 10))
-# ax[0].imshow(images[slice_idx], cmap='gray')
+# ax[0].imshow(images[frames_to_display[1]], cmap='gray')
 # ax[0].set_title("Original Image")
-# ax[1].imshow(np.sqrt(Vx_prewitt[slice_idx]**2+Vy_prewitt[slice_idx]**2), cmap='gray')
+# ax[1].imshow(np.sqrt(Vx_prewitt[frames_to_display[1]]**2+Vy_prewitt[frames_to_display[1]]**2), cmap='gray')
 # ax[1].set_title("Prewitt Gradient")
-# ax[2].imshow(np.sqrt(Vx_sobel[slice_idx]**2+Vy_sobel[slice_idx]**2), cmap='gray')
+# ax[2].imshow(np.sqrt(Vx_sobel[frames_to_display[1]]**2+Vy_sobel[frames_to_display[1]]**2), cmap='gray')
 # ax[2].set_title("Sobel Gradient")
 # for a in ax.ravel():
 #     a.axis('off')
