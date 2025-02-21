@@ -22,7 +22,5 @@ if __name__ == "__main__":
         plt.axis("off")  # Hide axes
         plt.pause(0.01)  # Pause for 50ms
         plt.clf()  # Clear figure for next frame
-
     plt.ioff()  # Turn off interactive mode
-
     plt.show()  # Show the final figure
