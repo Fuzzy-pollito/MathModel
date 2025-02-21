@@ -9,6 +9,24 @@ prewitt_y = np.array([[1, 1, 1], [0, 0, 0], [-1, -1, -1]])  # Vertical gradient 
 sobel_x = np.array([[1, 0, -1], [2, 0, -2], [1, 0, -1]])  # Horizontal gradient (Sobel)
 sobel_y = np.array([[1, 2, 1], [0, 0, 0], [-1, -2, -1]])  # Vertical gradient (Sobel)
 
+# Display the kernels in a single 2x2 grid
+fig, ax = plt.subplots(2, 2, figsize=(10, 10))
+# Prewitt Kernels
+ax[0, 0].imshow(prewitt_x, cmap='gray')
+ax[0, 0].set_title('Prewitt X Kernel')
+ax[0, 1].imshow(prewitt_y, cmap='gray')
+ax[0, 1].set_title('Prewitt Y Kernel')
+# Sobel Kernels
+ax[1, 0].imshow(sobel_x, cmap='gray')
+ax[1, 0].set_title('Sobel X Kernel')
+ax[1, 1].imshow(sobel_y, cmap='gray')
+ax[1, 1].set_title('Sobel Y Kernel')
+# Remove axis ticks for clarity
+for a in ax.ravel():
+    a.axis('off')
+plt.tight_layout()
+plt.show()
+
 # Compute gradients using Prewitt filter
 Vx_prewitt = scipy.ndimage.convolve(images, prewitt_x[np.newaxis, :, :])  # X-gradient (Prewitt)
 Vy_prewitt = scipy.ndimage.convolve(images, prewitt_y[np.newaxis, :, :])  # Y-gradient (Prewitt)
