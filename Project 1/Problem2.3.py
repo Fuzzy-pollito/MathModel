@@ -47,7 +47,7 @@ print('Vx shape:', Vx.shape)
 print('Vy shape:', Vy.shape)
 print('Vt shape:', Vt.shape)
 
-# Plotting
+# Display the Gaussian Gradient for selected frames
 fig, ax = plt.subplots(len(frames_to_display), 3, figsize=(15, 10))
 for i, frame in enumerate(frames_to_display):
     ax[i, 0].imshow(Vx[frame], cmap='gray')
