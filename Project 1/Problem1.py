@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import os
 
 # Folder containing images
-folder_path = "../Data/toyProblem_F22"
+folder_path = "Data/toyProblem_F22"
 
 # Get list of PNG files (sorted for consistency)
 image_files = sorted([f for f in os.listdir(folder_path) if f.endswith(".png")])
